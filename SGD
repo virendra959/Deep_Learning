@@ -1,0 +1,43 @@
+## SGD(Stochastic Gradient Descent) Algoritham
+
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# 1. Create dataset (2 classes like your image)
+np.random.seed(0)
+
+class1 = np.random.randn(200, 2) + np.array([-10, -4])
+class2 = np.random.randn(200, 2) + np.array([-2, 5])
+
+X = np.vstack((class1, class2))
+y = np.array([0]*200 + [1]*200)
+
+# 2. Plot Data
+plt.figure(figsize=(6,5))
+plt.scatter(X[:,0], X[:,1], c=y)
+plt.title("Data")
+plt.show()
+
+# 3. Build Model (Feedforward NN)
+model = Sequential([
+    Dense(8, input_dim=2, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+
+# 4. Compile with SGD
+model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.01),
+              loss='binary_crossentropy')
+
+# 5. Train model
+history = model.fit(X, y, epochs=100, verbose=0)
+
+# 6. Plot Training Loss
+plt.figure(figsize=(6,5))
+plt.plot(history.history['loss'])
+plt.title("Training Loss")
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.show()
