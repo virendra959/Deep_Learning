@@ -1,4 +1,25 @@
 ## SGD(Stochastic Gradient Descent) Algoritham
+Stochastic Gradient Descent (SGD) is an optimization algorithm used to minimize the loss function in machine learning models by updating model parameters (weights and biases) using one training example at a time.
+🔹 Purpose of SGD
+
+SGD is used to:
+
+Train machine learning models (especially neural networks)
+Find optimal values of weights
+Reduce prediction error (loss)
+🔹 Working Principle
+
+SGD works by iteratively updating weights in the direction that reduces the loss.
+
+Basic Steps:
+Initialize weights randomly
+Pick one training example (x, y)
+Compute prediction
+Calculate loss (error)
+Compute gradient of loss
+Update weights
+Repeat for all data points
+
 
 import numpy as np
 import matplotlib.pyplot as plt
